@@ -4,6 +4,9 @@
 /* Level 2 — TODO: tambahkan minimal satu selector ELEMEN (mis. p { ... }),
    satu selector CLASS (mis. .deskripsi { ... }), dan satu selector ID
    (mis. #judul-utama { ... }). Boleh style apa saja. */
+#pengumuman-utama{
+   color: red;
+}
 
 /* Level 3 — TODO: lengkapi aturan .kotak di bawah supaya punya padding,
    border, DAN margin sekaligus (nilainya bebas, asal bukan nol). */
