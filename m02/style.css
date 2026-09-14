@@ -19,6 +19,9 @@
 
 /* Level 4 — TODO: tambahkan box-sizing: border-box. Biasanya ditulis untuk
    selector universal (*), supaya berlaku ke semua elemen sekaligus. */
+* {
+  box-sizing: border-box;
+}
 
 /* Level 5 — TODO: tulis aturan untuk `.daftar > li` (anak LANGSUNG saja),
    misalnya list-style: square. Item yang bersarang dua level di dalamnya
