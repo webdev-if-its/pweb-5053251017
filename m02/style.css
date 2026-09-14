@@ -12,6 +12,9 @@
    border, DAN margin sekaligus (nilainya bebas, asal bukan nol). */
 .kotak {
   background-color: #eef7ee;
+  padding: 10px;
+  border: #999999  1px solid;
+  margin: 10px;
 }
 
 /* Level 4 — TODO: tambahkan box-sizing: border-box. Biasanya ditulis untuk
