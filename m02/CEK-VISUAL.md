@@ -11,6 +11,7 @@ per mahasiswa.
 - [x] Buka di browser — kotak "Rak Fiksi" punya jarak dari tepinya sendiri
       (padding) DAN garis tepi (border) DAN jarak dari elemen sekitarnya
       (margin) — ketiganya terlihat berbeda, bukan cuma satu yang terasa?
+      
 ![nomor 3](gambar/3.png)
 
 ## Level 4 — border-box (dua tangkapan layar)
@@ -35,6 +36,7 @@ Ini level yang secara eksplisit minta perbandingan visual:
       jelas (bukan cuma kursor berubah)?
 - [x] Klik di area lain dulu, lalu tekan Tab sampai fokus sampai ke tombol
       itu — ada indikator fokus yang jelas terlihat?
+
 ![nomor 6](gambar/6.png)
 
 
@@ -46,6 +48,7 @@ Ini level yang secara eksplisit minta perbandingan visual:
       terang), bukan cuma sebagian?
 - [x] Apakah teksnya masih terbaca jelas (bukan teks gelap di atas latar
       gelap, atau sebaliknya)?
+
 ![nomor 10](gambar/10.png)
 
 ---
