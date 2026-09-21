@@ -8,12 +8,13 @@ mahasiswa.
 
 ## Level 1–3 — Kartu flex
 
-- [ ] Tiga kartu koleksi unggulan berjajar ke SAMPING (bukan bertumpuk ke
+- [x] Tiga kartu koleksi unggulan berjajar ke SAMPING (bukan bertumpuk ke
       bawah)?
-- [ ] Ada jarak yang masuk akal di antara ketiganya (efek dari
+- [x] Ada jarak yang masuk akal di antara ketiganya (efek dari
       justify-content)?
-- [ ] Kartu kedua teksnya lebih panjang/tinggi — apakah ketiganya tetap
+- [x] Kartu kedua teksnya lebih panjang/tinggi — apakah ketiganya tetap
       terlihat rapi sejajar (bukan salah satu "mengambang" aneh)?
+![hasil 1-3](./gambar/level1-3.png)
 
 ## Level 4 — Sidebar tetap, konten mengisi
 

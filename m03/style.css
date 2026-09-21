@@ -12,6 +12,8 @@ body {
   display: flex;
   /* Level 2 */
   justify-content: space-between;
+  /* Level 3  */
+  align-items: center;
 }
 
 .kartu {
@@ -20,7 +22,6 @@ body {
   border: 1px solid #2c6e49;
 }
 
-/* Level 3  */
 
 /* Level 4 */
 .tata-letak {
