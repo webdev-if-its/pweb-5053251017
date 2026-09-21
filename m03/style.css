@@ -51,6 +51,7 @@ body {
 .kisi {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* Level 7 */
   gap: 1rem;
 }
 
@@ -60,9 +61,11 @@ body {
   padding: 1rem;
 }
 
-/* Level 7 */
 
 /* Level 8 */
+.unggulan {
+  grid-column: span 2;
+}
 
 /* Level 9
 
