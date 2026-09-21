@@ -50,7 +50,8 @@ body {
 /* Level 6 */
 .kisi {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Level 9  */
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
   /* Level 7 */
   gap: 1rem;
 }
@@ -67,6 +68,4 @@ body {
   grid-column: span 2;
 }
 
-/* Level 9
-
-   Level 10 */
+/* Level 10 */ 
