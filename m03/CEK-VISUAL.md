@@ -25,11 +25,11 @@ mahasiswa.
 ## Level 5 — Sumbu berpindah
 
 - [x] Tiga baris info kontak tersusun ke BAWAH (bukan ke samping)?
-![]()
+![level 5](./gambar/level5.png)
 
 ## Level 6–9 — Grid koleksi
 
-- [ ] Di layar lebar (desktop), koleksi tersusun jadi beberapa kolom
+- [x] Di layar lebar (desktop), koleksi tersusun jadi beberapa kolom
       (bukan satu kolom memanjang ke bawah)?
 - [ ] Ada jarak yang konsisten antar kartu, tanpa jarak ganda yang aneh di
       salah satu sisi (indikasi ada margin yang seharusnya tidak ada)?
