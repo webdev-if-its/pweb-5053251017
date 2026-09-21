@@ -18,12 +18,14 @@ mahasiswa.
 
 ## Level 4 — Sidebar tetap, konten mengisi
 
-- [ ] Lebarkan/sempitkan jendela browser — sidebar tetap sama lebarnya
+- [x] Lebarkan/sempitkan jendela browser — sidebar tetap sama lebarnya
       (kira-kira 250px), sementara area konten yang melebar/menyempit?
+![hasil 4](./gambar/level4.png)
 
 ## Level 5 — Sumbu berpindah
 
-- [ ] Tiga baris info kontak tersusun ke BAWAH (bukan ke samping)?
+- [x] Tiga baris info kontak tersusun ke BAWAH (bukan ke samping)?
+![]()
 
 ## Level 6–9 — Grid koleksi
 
