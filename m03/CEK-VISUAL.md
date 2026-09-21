@@ -31,17 +31,18 @@ mahasiswa.
 
 - [x] Di layar lebar (desktop), koleksi tersusun jadi beberapa kolom
       (bukan satu kolom memanjang ke bawah)?
-- [ ] Ada jarak yang konsisten antar kartu, tanpa jarak ganda yang aneh di
+- [x] Ada jarak yang konsisten antar kartu, tanpa jarak ganda yang aneh di
       salah satu sisi (indikasi ada margin yang seharusnya tidak ada)?
-- [ ] Kartu "Buku Unggulan Bulan Ini" terlihat lebih LEBAR dari kartu lain
+- [x] Kartu "Buku Unggulan Bulan Ini" terlihat lebih LEBAR dari kartu lain
       (memakan 2 kolom)?
+![hasil 6-9](./gambar/level6-9.png)
 
 ## Level 10 — Responsif tanpa @media
 
-- [ ] Sempitkan jendela browser pelan-pelan (atau DevTools device
+- [x] Sempitkan jendela browser pelan-pelan (atau DevTools device
       toolbar) — apakah jumlah kolom grid berkurang otomatis mengikuti
       lebar, TANPA patahan yang aneh (kartu terpotong, tumpang tindih)?
-- [ ] Di 320px, apakah grid-nya jadi satu kolom yang rapi (bukan tetap
+- [x] Di 320px, apakah grid-nya jadi satu kolom yang rapi (bukan tetap
       memaksa banyak kolom yang jadi sempit sekali)?
 
 ---
