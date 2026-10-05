@@ -99,6 +99,7 @@ export function render(data) {
 
   data.forEach((buku) => {
     const kartu = buatKartuBuku(buku);
+    kartu.addEventListener('click', () => tampilkanDetail(buku));
     katalogEl.appendChild(kartu);
   });
 }
@@ -106,7 +107,8 @@ export function render(data) {
 // Level 7 — dipanggil saat sebuah kartu diklik. TODO: tampilkan judul,
 // penulis, dan harga buku itu di #panel-detail (textContent, bukan innerHTML).
 function tampilkanDetail(buku) {
-  // tulis di sini
+  const panel = document.querySelector('#panel-detail');
+  panel.textContent = `${buku.judul} — ${buku.penulis} — ${formatRupiah(buku.harga)}`;
 }
 
 // Level 8 & 9 — TODO: pasang event listener 'submit' pada #form-cari.
@@ -115,7 +117,17 @@ function tampilkanDetail(buku) {
 //   mengandung kata itu (tanpa peduli huruf besar/kecil), lalu panggil
 //   render(hasil) — bukan menulis ulang kode tampilan di sini.
 export function pasangFormCari() {
-  // tulis di sini
+  const form = document.querySelector('#form-cari');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const input = document.querySelector('#input-cari');
+    const kata = input.value.trim().toLowerCase();
+    const hasil = katalog.filter((buku) => buku.judul.toLowerCase().includes(kata));
+
+    render(hasil);
+  });
 }
 
 // Bootstrap halaman — jangan hapus, ini yang membuat halaman "hidup" saat
