@@ -52,8 +52,7 @@ export function tandaiPengumumanPenting() {
 }
 
 // Level 5 — TODO: buat SATU elemen <article> untuk satu buku, memakai
-// document.createElement dan textContent (BUKAN innerHTML — aturan ini
-// berlaku untuk seluruh file, bukan cuma fungsi ini).
+// document.createElement dan textContent.
 // Struktur minimal: <article><h3>judul</h3><p>penulis</p><p>harga</p></article>
 // Kembalikan elemen itu (jangan langsung ditempel ke halaman di sini).
 export function buatKartuBuku(buku) {
@@ -87,7 +86,10 @@ export function render(data) {
   const katalogEl = document.querySelector('#katalog');
   const ringkasanEl = document.querySelector('#ringkasan');
 
-  katalogEl.innerHTML = '';
+  while (katalogEl.firstChild) {
+    katalogEl.removeChild(katalogEl.firstChild);
+  }
+
   ringkasanEl.textContent = `${data.length} buku ditemukan`;
 
   if (data.length === 0) {
@@ -105,7 +107,7 @@ export function render(data) {
 }
 
 // Level 7 — dipanggil saat sebuah kartu diklik. TODO: tampilkan judul,
-// penulis, dan harga buku itu di #panel-detail (textContent, bukan innerHTML).
+// penulis, dan harga buku itu di #panel-detail dengan textContent.
 function tampilkanDetail(buku) {
   const panel = document.querySelector('#panel-detail');
   panel.textContent = `${buku.judul} — ${buku.penulis} — ${formatRupiah(buku.harga)}`;
