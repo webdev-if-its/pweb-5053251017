@@ -40,6 +40,15 @@ export function sorotJudulPengumuman() {
 // Jangan tambahkan prefix dua kali kalau fungsi ini terpanggil berulang.
 export function tandaiPengumumanPenting() {
   // tulis di sini
+  const items = document.querySelectorAll('#daftar-pengumuman li');
+
+  items.forEach(li => {
+    const teks = li.textContent.trim();
+
+    if (/tutup/i.test(teks) && !teks.startsWith('⚠')) {
+      li.textContent = '⚠ ' + teks;
+    }
+  });
 }
 
 // Level 5 — TODO: buat SATU elemen <article> untuk satu buku, memakai
