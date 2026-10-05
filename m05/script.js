@@ -57,7 +57,22 @@ export function tandaiPengumumanPenting() {
 // Struktur minimal: <article><h3>judul</h3><p>penulis</p><p>harga</p></article>
 // Kembalikan elemen itu (jangan langsung ditempel ke halaman di sini).
 export function buatKartuBuku(buku) {
-  return null;
+  const article = document.createElement('article');
+
+  const h3 = document.createElement('h3');
+  h3.textContent = buku.judul;
+
+  const pPenulis = document.createElement('p');
+  pPenulis.textContent = buku.penulis;
+
+  const pHarga = document.createElement('p');
+  pHarga.textContent = formatRupiah(buku.harga);
+
+  article.appendChild(h3);
+  article.appendChild(pPenulis);
+  article.appendChild(pHarga);
+
+  return article;
 }
 
 // Level 6 & 10 — TODO: kosongkan #katalog, lalu render ulang dari `data`.
@@ -69,7 +84,23 @@ export function buatKartuBuku(buku) {
 //   "Tidak ada buku yang cocok." — jangan biarkan #katalog kosong melompong.
 // - Setiap kartu yang ditampilkan harus bisa diklik (lihat Level 7).
 export function render(data) {
-  // tulis di sini
+  const katalogEl = document.querySelector('#katalog');
+  const ringkasanEl = document.querySelector('#ringkasan');
+
+  katalogEl.innerHTML = '';
+  ringkasanEl.textContent = `${data.length} buku ditemukan`;
+
+  if (data.length === 0) {
+    const pesan = document.createElement('p');
+    pesan.textContent = 'Tidak ada buku yang cocok.';
+    katalogEl.appendChild(pesan);
+    return;
+  }
+
+  data.forEach((buku) => {
+    const kartu = buatKartuBuku(buku);
+    katalogEl.appendChild(kartu);
+  });
 }
 
 // Level 7 — dipanggil saat sebuah kartu diklik. TODO: tampilkan judul,
