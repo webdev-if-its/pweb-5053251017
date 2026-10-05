@@ -30,7 +30,8 @@ export function saringTersedia(daftar) {
 // Level 3 — TODO: ambil elemen #judul-pengumuman dengan querySelector,
 // lalu ubah teksnya menjadi HURUF BESAR SEMUA.
 export function sorotJudulPengumuman() {
-  // tulis di sini
+  const jduul = document.querySelector("#judul-pengumuman");
+  jduul.textContent = jduul.textContent.toUpperCase();
 }
 
 // Level 4 — TODO: ambil SEMUA <li> di #daftar-pengumuman dengan
