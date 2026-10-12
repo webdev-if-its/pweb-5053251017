@@ -39,7 +39,7 @@ export const catatanEvent = { target: null, currentTarget: null };
 
 export function pasangAksiCepat() {
   let aksiCepat = document.querySelector('#aksi-cepat');
-  aksiCepat.addEventListener('click', function (event) {
+  aksiCepat.addEventListener('click', function(event) {
     catatanEvent.target = event.target;
     catatanEvent.currentTarget = event.currentTarget;
   });
@@ -56,17 +56,17 @@ export const hitungKlik = { luar: 0, dalam: 0 };
 
 export function pasangBuktiBubbling() {
   let areaBubbling = document.querySelector('#area-bubbling');
-  areaBubbling.addEventListener('click', function (event) {
+  areaBubbling.addEventListener('click', function(event) {
     hitungKlik.luar++;
   });
 
   let tombolTanpaStop = document.querySelector('#tombol-tanpa-stop');
-  tombolTanpaStop.addEventListener('click', function (event) {
+  tombolTanpaStop.addEventListener('click', function(event) {
     hitungKlik.dalam++;
   });
 
   let tombolStop = document.querySelector('#tombol-stop');
-  tombolStop.addEventListener('click', function (event) {
+  tombolStop.addEventListener('click', function(event) {
     hitungKlik.dalam++;
     event.stopPropagation();
   });
@@ -115,10 +115,21 @@ export function render(state) {
   const ringkasan = document.querySelector('#ringkasan');
   ringkasan.textContent = `${state.katalog.length} buku ditemukan`;
 
-  // Level 9 — TODO: render juga #daftar-bacaan dari state.daftarBacaan.
-  // Kalau kosong, tampilkan pesan yang jelas (misalnya "Belum ada buku di
-  // daftar bacaan.") di dalam #daftar-bacaan — jangan biarkan <ul> kosong
-  // melompong tanpa penjelasan apa pun.
+  const daftarBacaan = document.querySelector('#daftar-bacaan');
+  daftarBacaan.textContent = '';
+
+  if (state.daftarBacaan.length === 0) {
+    const pesan = document.createElement('li');
+    pesan.textContent = 'Belum ada buku di daftar bacaan.';
+    daftarBacaan.append(pesan);
+    return;
+  }
+
+  for (const buku of state.daftarBacaan) {
+    const item = document.createElement('li');
+    item.textContent = `${buku.judul} — ${buku.penulis} (${formatRupiah(buku.harga)})`;
+    daftarBacaan.append(item);
+  }
 }
 
 // ------------------------------------------------------------ DAFTAR BACAAN
@@ -163,7 +174,7 @@ export function tambahKeBacaan(buku) {
 // tambahKeBacaan(...).
 export function pasangDelegasiKatalog() {
   let katalog = document.querySelector('#katalog');
-  katalog.addEventListener('click', function (event) {
+  katalog.addEventListener('click', function(event) {
     const tombol = event.target.closest('button[data-aksi="tambah-bacaan"]');
     if (tombol) {
       const buku = {
