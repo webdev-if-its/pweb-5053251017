@@ -132,7 +132,24 @@ export function render(state) {
 // - Level 5 — panggil render(state) di akhir, supaya tampilan langsung
 //   berubah tanpa kode lain perlu memanggilnya lagi.
 export function tambahKeBacaan(buku) {
-  state.daftarBacaan.push(buku);
+  if (!buku || typeof buku !== 'object') return;
+
+  const judulBaru = String(buku.judul ?? '').trim();
+  if (!judulBaru) return;
+
+  const judulSudahAda = state.daftarBacaan.some((item) =>
+    String(item?.judul ?? '').trim().toLowerCase() === judulBaru.toLowerCase(),
+  );
+
+  if (judulSudahAda) return;
+
+  const bukuBaru = {
+    judul: judulBaru,
+    penulis: String(buku.penulis ?? '').trim(),
+    harga: Number(buku.harga) || 0,
+  };
+
+  state.daftarBacaan.push(bukuBaru);
   localStorage.setItem(KUNCI_PENYIMPANAN, JSON.stringify(state.daftarBacaan));
   render(state);
 }
