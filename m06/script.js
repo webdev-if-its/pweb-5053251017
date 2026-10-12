@@ -132,7 +132,7 @@ export function render(state) {
 // - Level 5 — panggil render(state) di akhir, supaya tampilan langsung
 //   berubah tanpa kode lain perlu memanggilnya lagi.
 export function tambahKeBacaan(buku) {
-  // tulis di sini
+  state.daftarBacaan.push(buku);
 }
 
 // Level 4 — TODO: pasang SATU listener klik pada #katalog (bukan pada
@@ -143,7 +143,18 @@ export function tambahKeBacaan(buku) {
 // Ambil data buku dari dataset tombol (judul, penulis, harga), lalu panggil
 // tambahKeBacaan(...).
 export function pasangDelegasiKatalog() {
-  // tulis di sini
+  let katalog = document.querySelector('#katalog');
+  katalog.addEventListener('click', function (event) {
+    const tombol = event.target.closest('button[data-aksi="tambah-bacaan"]');
+    if (tombol) {
+      const buku = {
+        judul: tombol.dataset.judul,
+        penulis: tombol.dataset.penulis,
+        harga: Number(tombol.dataset.harga),
+      };
+      tambahKeBacaan(buku);
+    }
+  });
 }
 
 // Level 7 — BUG: baris ini crash kalau isi localStorage bukan JSON yang
@@ -152,7 +163,15 @@ export function pasangDelegasiKatalog() {
 // kembalikan array kosong saja — jangan biarkan aplikasi crash.
 export function muatDaftarBacaan() {
   const tersimpan = localStorage.getItem(KUNCI_PENYIMPANAN);
-  return JSON.parse(tersimpan);
+
+  if (!tersimpan) return [];
+
+  try {
+    const data = JSON.parse(tersimpan);
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 // -------------------------------------------------------------- BOOTSTRAP
