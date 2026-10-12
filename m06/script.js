@@ -39,7 +39,7 @@ export const catatanEvent = { target: null, currentTarget: null };
 
 export function pasangAksiCepat() {
   let aksiCepat = document.querySelector('#aksi-cepat');
-  aksiCepat.addEventListener('click', function(event) {
+  aksiCepat.addEventListener('click', function (event) {
     catatanEvent.target = event.target;
     catatanEvent.currentTarget = event.currentTarget;
   });
@@ -56,17 +56,17 @@ export const hitungKlik = { luar: 0, dalam: 0 };
 
 export function pasangBuktiBubbling() {
   let areaBubbling = document.querySelector('#area-bubbling');
-  areaBubbling.addEventListener('click', function(event) {
+  areaBubbling.addEventListener('click', function (event) {
     hitungKlik.luar++;
   });
 
   let tombolTanpaStop = document.querySelector('#tombol-tanpa-stop');
-  tombolTanpaStop.addEventListener('click', function(event) {
+  tombolTanpaStop.addEventListener('click', function (event) {
     hitungKlik.dalam++;
   });
 
   let tombolStop = document.querySelector('#tombol-stop');
-  tombolStop.addEventListener('click', function(event) {
+  tombolStop.addEventListener('click', function (event) {
     hitungKlik.dalam++;
     event.stopPropagation();
   });
@@ -133,6 +133,8 @@ export function render(state) {
 //   berubah tanpa kode lain perlu memanggilnya lagi.
 export function tambahKeBacaan(buku) {
   state.daftarBacaan.push(buku);
+  localStorage.setItem(KUNCI_PENYIMPANAN, JSON.stringify(state.daftarBacaan));
+  render(state);
 }
 
 // Level 4 — TODO: pasang SATU listener klik pada #katalog (bukan pada
