@@ -116,6 +116,10 @@ export async function cariDanRender(kataKunci) {
     const data = await ambilBuku(kataKunci);
     render(data);
     status.textContent = "";
+
+    if (data.length === 0) {
+      status.textContent = 'Tidak ada buku ditemukan.';
+    }
   } catch (error) {
     status.textContent = 'Gagal memuat data. Coba lagi.';
   }
