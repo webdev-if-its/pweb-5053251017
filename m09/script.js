@@ -48,11 +48,20 @@ export async function urutanEksekusi() {
 // - Level 4: fetch() TIDAK menolak (reject) promise-nya untuk status error
 //   seperti 404/500 — hanya untuk kegagalan jaringan. Periksa
 //   `response.ok`; kalau false, `throw new Error(...)` sendiri.
-export function ambilBuku(kataKunci) {
+export async function ambilBuku(kataKunci) {
   const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(kataKunci)}&limit=5`;
-  return fetch(url)
-    .then((res) => res.json())
-    .then((json) => json.docs);
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Gagal memuat data');
+  }
+
+  const data = await response.json();
+  return data.docs.map((doc) => ({
+    judul: doc.title || 'Tidak diketahui',
+    penulis: doc.author_name?.[0] || 'Tidak diketahui',
+    tahun: doc.first_publish_year || 'Tidak diketahui'
+  }));
 }
 
 // -------------------------------------------------------------- RENDER
