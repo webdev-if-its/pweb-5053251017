@@ -111,9 +111,11 @@ let permintaanTerakhir = 0;
 export async function cariDanRender(kataKunci) {
   const status = document.querySelector('#status-pencarian');
   status.textContent = 'Memuat...';
+  const nomorPermintaan = ++permintaanTerakhir;
 
   try {
     const data = await ambilBuku(kataKunci);
+    if (nomorPermintaan !== permintaanTerakhir) return;
     render(data);
     status.textContent = "";
 
@@ -121,6 +123,7 @@ export async function cariDanRender(kataKunci) {
       status.textContent = 'Tidak ada buku ditemukan.';
     }
   } catch (error) {
+    if (nomorPermintaan !== permintaanTerakhir) return;
     status.textContent = 'Gagal memuat data. Coba lagi.';
   }
 }
