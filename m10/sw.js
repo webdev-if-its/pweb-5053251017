@@ -14,6 +14,10 @@ function adalahAsetStatis(request) {
 // Level 5 — TODO: coba ambil dari cache dulu (caches.match). Kalau ada,
 // kembalikan itu. Kalau tidak ada, baru fetch() ke jaringan.
 async function cacheFirst(request) {
+  const cache = await caches.match(request);
+  if (cache) {
+    return cache;
+  }
   return fetch(request);
 }
 
@@ -49,13 +53,14 @@ self.addEventListener('activate', (event) => {
 // yang sedang dipakai.
 
 // Level 3 — TODO: daftarkan listener 'fetch'.
-self.addEventListener('fetch', (event) => {
-
-});
 // Level 7 — di dalam listener itu, route permintaan ke strategi yang
 // tepat: adalahAsetStatis(request) ? cacheFirst(request) :
 // networkFirst(request). Panggil event.respondWith(...) dengan hasilnya.
-//
+self.addEventListener('fetch', (event) => {
+  if (adalahAsetStatis(event.request)) {
+    event.respondWith(cacheFirst(event.request));
+  }
+});
 // Level 8 — khusus untuk permintaan navigasi halaman
 // (request.mode === 'navigate') yang gagal total (networkFirst
 // menolak/reject), kembalikan caches.match('/offline.html') sebagai
