@@ -10,13 +10,16 @@ otomatis di repo ini.
 
 - [x] Jalankan halaman lewat server lokal (Live Server, atau `npx serve`)
       — service worker **tidak** bisa didaftarkan lewat `file://`
-- [ ] Buka DevTools → Lighthouse → centang kategori "Progressive Web App" →
+![sw](./images/sw.png)
+- [x] Buka DevTools → Lighthouse → centang kategori "Progressive Web App" →
       Analyze page load
-- [ ] Skor PWA harus lolos semua kriteria inti: manifest valid, service
+- [x] Skor PWA harus lolos semua kriteria inti: manifest valid, service
       worker terdaftar, halaman merespons saat offline
-- [ ] Coba juga: matikan koneksi di tab Network DevTools, refresh halaman —
+![lighthouse](./images/lighthouse.png)
+- [x] Coba juga: matikan koneksi di tab Network DevTools, refresh halaman —
       apakah halaman (atau `offline.html`) tetap muncul, bukan pesan error
       browser bawaan ("Tidak ada koneksi internet")?
+![offline](./images/offline.png)
 
 **Lolos kalau:** audit Lighthouse PWA tidak menunjukkan kegagalan pada
 kriteria inti, dan halaman tetap terbuka saat koneksi dimatikan.
