@@ -26,6 +26,16 @@ async function cacheFirst(request) {
 // dari cache. Kalau di cache juga tidak ada, biarkan error itu terus
 // menyebar (jangan ditangkap diam-diam dengan mengembalikan undefined).
 async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    return response;
+  } catch (error) {
+    const cache = await caches.match(request);
+    if (cache) {
+      return cache;
+    }
+    throw error; 
+  }
   return fetch(request);
 }
 
@@ -59,6 +69,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (adalahAsetStatis(event.request)) {
     event.respondWith(cacheFirst(event.request));
+  } else {
+    event.respondWith(networkFirst(event.request));
   }
 });
 // Level 8 — khusus untuk permintaan navigasi halaman
