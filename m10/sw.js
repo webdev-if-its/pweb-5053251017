@@ -81,11 +81,6 @@ self.addEventListener('activate', (event) => {
 // menolak/reject), kembalikan caches.match('/offline.html') sebagai
 // cadangan, alih-alih membiarkan halamannya gagal dimuat.
 self.addEventListener('fetch', (event) => {
-  if (adalahAsetStatis(event.request)) {
-    event.respondWith(cacheFirst(event.request));
-  } else {
-    event.respondWith(networkFirst(event.request));
-  }
 
   if (event.request.mode === 'navigate') {
     event.respondWith(
@@ -93,6 +88,12 @@ self.addEventListener('fetch', (event) => {
         return caches.match('/offline.html');
       })
     );
+  } else {
+    if (adalahAsetStatis(event.request)) {
+      event.respondWith(cacheFirst(event.request));
+    } else {
+      event.respondWith(networkFirst(event.request));
+    }
   }
 });
 

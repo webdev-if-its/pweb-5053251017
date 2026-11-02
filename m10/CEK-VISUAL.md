@@ -8,7 +8,7 @@ otomatis di repo ini.
 
 ## Level 10 — Lolos audit Lighthouse PWA
 
-- [ ] Jalankan halaman lewat server lokal (Live Server, atau `npx serve`)
+- [x] Jalankan halaman lewat server lokal (Live Server, atau `npx serve`)
       — service worker **tidak** bisa didaftarkan lewat `file://`
 - [ ] Buka DevTools → Lighthouse → centang kategori "Progressive Web App" →
       Analyze page load
