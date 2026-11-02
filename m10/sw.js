@@ -66,14 +66,23 @@ self.addEventListener('activate', (event) => {
 // Level 7 — di dalam listener itu, route permintaan ke strategi yang
 // tepat: adalahAsetStatis(request) ? cacheFirst(request) :
 // networkFirst(request). Panggil event.respondWith(...) dengan hasilnya.
+// Level 8 — khusus untuk permintaan navigasi halaman
+// (request.mode === 'navigate') yang gagal total (networkFirst
+// menolak/reject), kembalikan caches.match('/offline.html') sebagai
+// cadangan, alih-alih membiarkan halamannya gagal dimuat.
 self.addEventListener('fetch', (event) => {
   if (adalahAsetStatis(event.request)) {
     event.respondWith(cacheFirst(event.request));
   } else {
     event.respondWith(networkFirst(event.request));
   }
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      networkFirst(event.request).catch(() => {
+        return caches.match('/offline.html');
+      })
+    );
+  }
 });
-// Level 8 — khusus untuk permintaan navigasi halaman
-// (request.mode === 'navigate') yang gagal total (networkFirst
-// menolak/reject), kembalikan caches.match('/offline.html') sebagai
-// cadangan, alih-alih membiarkan halamannya gagal dimuat.
+
