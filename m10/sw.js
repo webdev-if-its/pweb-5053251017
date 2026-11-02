@@ -27,11 +27,16 @@ async function networkFirst(request) {
 
 // Level 3 — TODO: daftarkan listener 'install' lewat
 // self.addEventListener('install', (event) => { ... }).
-self.addEventListener('install', (event) => {
-
-});
 // Level 4 — di dalam listener itu: pakai event.waitUntil(...) untuk
 // membuka cache bernama NAMA_CACHE (caches.open), lalu addAll(ASET_UTAMA).
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(NAMA_CACHE)
+      .then((cache) => {
+        return cache.addAll(ASET_UTAMA);
+      })
+  );
+});
 
 // Level 3 — TODO: daftarkan listener 'activate'.
 self.addEventListener('activate', (event) => {
