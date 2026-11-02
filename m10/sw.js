@@ -53,14 +53,24 @@ self.addEventListener('install', (event) => {
 });
 
 // Level 3 — TODO: daftarkan listener 'activate'.
-self.addEventListener('activate', (event) => {
-
-});
 // Level 9 — di dalam listener itu: pakai event.waitUntil(...) untuk
 // menghapus semua cache LAMA (nama cache yang BUKAN NAMA_CACHE saat ini).
 // Pakai caches.keys() untuk melihat semua nama cache yang ada, lalu
 // caches.delete(nama) untuk yang sudah usang. Jangan hapus NAMA_CACHE
 // yang sedang dipakai.
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== NAMA_CACHE) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
 
 // Level 3 — TODO: daftarkan listener 'fetch'.
 // Level 7 — di dalam listener itu, route permintaan ke strategi yang
