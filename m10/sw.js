@@ -27,12 +27,16 @@ async function networkFirst(request) {
 
 // Level 3 — TODO: daftarkan listener 'install' lewat
 // self.addEventListener('install', (event) => { ... }).
-//
+self.addEventListener('install', (event) => {
+
+});
 // Level 4 — di dalam listener itu: pakai event.waitUntil(...) untuk
 // membuka cache bernama NAMA_CACHE (caches.open), lalu addAll(ASET_UTAMA).
 
 // Level 3 — TODO: daftarkan listener 'activate'.
-//
+self.addEventListener('activate', (event) => {
+
+});
 // Level 9 — di dalam listener itu: pakai event.waitUntil(...) untuk
 // menghapus semua cache LAMA (nama cache yang BUKAN NAMA_CACHE saat ini).
 // Pakai caches.keys() untuk melihat semua nama cache yang ada, lalu
@@ -40,7 +44,9 @@ async function networkFirst(request) {
 // yang sedang dipakai.
 
 // Level 3 — TODO: daftarkan listener 'fetch'.
-//
+self.addEventListener('fetch', (event) => {
+
+});
 // Level 7 — di dalam listener itu, route permintaan ke strategi yang
 // tepat: adalahAsetStatis(request) ? cacheFirst(request) :
 // networkFirst(request). Panggil event.respondWith(...) dengan hasilnya.
